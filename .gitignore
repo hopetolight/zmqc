@@ -1,4 +1,6 @@
-**/target/
 .idea/*
-**/*.iml
 *.iml
+*/*.iml
+*/target/
+*/node_modules/
+*/node_modules2/
