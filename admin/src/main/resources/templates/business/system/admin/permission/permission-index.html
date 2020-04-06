@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="x-admin-sm">
+    <head>
+        <title>后台登录-X-admin2.2</title>
+        <th:block th:replace="common/common :: common-head"/>
+        <script type="text/javascript" th:src="@{/static/business/system/admin/permission/adminPermission.js}"></script>
+    </head>
+    <body>
+        <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+              <cite>导航元素</cite></a>
+          </span>
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">
+                            <button type="button" class="layui-btn layui-btn-sm" onclick="permission.addChild()">添加权限</button>
+                        </div>
+                        <div class="layui-card-body">
+                            <div class="layui-row layui-col-space15">
+                                <div id="treeArea" class="layui-col-md3">
+                                    <div class="current-click">
+                                        当前选择的为: <span id="currentClick"></span>
+                                    </div>
+                                    <div>
+                                        <ul id="permissionTree" class="dtree" data-id="0"></ul>
+                                    </div>
+                                </div>
+                                <div id="formArea" class="layui-col-md8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+
+    <script id="menuTpl" type="text/html">
+        <form class="layui-form" action="">
+            <input type="hidden" name="id" value="{{ d.id }}">
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限类型</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="type" value="{{ d.type }}">
+                    <div class="layui-form-mid layui-word-aux">
+                        {{# if(d.type == 1){ }}
+                            菜单
+                        {{# }else if(d.type == 2){ }}
+                            页面
+                        {{# }else if(d.type == 3){ }}
+                            请求
+                        {{# } }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="title" value="{{ d.title }}" required lay-verify="required" placeholder="请求输入权限名称" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限编码</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="code" value="{{ d.code }}" required lay-verify="required" placeholder="请求输入权限编码" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">权限名称</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">父级权限</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="parentId" lay-filter="parentId" value="{{ d.parentId }}"  name="parentId" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限地址</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="path" value="{{ d.path }}" required lay-verify="required" placeholder="请输入权限地址" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">描述</label>
+                <div class="layui-input-block">
+                    <textarea name="description" placeholder="请输入描述" value="" class="layui-textarea">{{ d.description }}</textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="updatePermission">提交修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </script>
+</html>

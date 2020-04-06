@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="x-admin-sm">
+
+<head>
+    <title>欢迎页面-X-admin2.2</title>
+    <th:block th:replace="common/common :: common-head"/>
+    <script type="text/javascript" th:src="@{/static/business/system/admin/role/adminRole.js}"></script>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <form class="layui-form">
+            <input type="hidden" name="id" th:value="${adminRole.id}">
+            <div class="layui-form-item">
+                <label for="roleName" class="layui-form-label">
+                    <span class="x-red">*</span>角色名称
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="roleName" name="roleName" required="" lay-verify="required" th:value="${adminRole.roleName}"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>将会成为您唯一的登入名
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="roleCode" class="layui-form-label">
+                    <span class="x-red">*</span>角色编码
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="roleCode" name="roleCode" required="" lay-verify="nickName" th:value="${adminRole.roleCode}"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button  class="layui-btn" lay-filter="editForm" lay-submit="">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

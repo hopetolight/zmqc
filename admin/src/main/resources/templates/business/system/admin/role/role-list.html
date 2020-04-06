@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="x-admin-sm">
+    <head>
+        <title>后台登录-X-admin2.2</title>
+        <th:block th:replace="common/common :: common-head"/>
+        <script type="text/javascript" th:src="@{/static/business/system/admin/role/adminRole.js}"></script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">演示</a>
+            <a>
+              <cite>导航元素</cite></a>
+          </span>
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5">
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input class="layui-input"  autocomplete="off" placeholder="开始日" name="start" id="start">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input class="layui-input"  autocomplete="off" placeholder="截止日" name="end" id="end">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-inline layui-show-xs-block">
+                                    <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-card-body ">
+                            <table id="adminRoleTable" lay-filter="roleTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script type="text/html" id="roleTableToolBar">
+        <button lay-event="batchDel" class="layui-btn layui-btn-danger"><i class="layui-icon"></i>批量删除</button>
+        <button lay-event="add" class="layui-btn"><i class="layui-icon"></i>添加</button>
+    </script>
+    <script type="text/html" id="roleRowToolBar">
+        <button lay-event="del" class="layui-btn layui-btn-danger"><i class="layui-icon"></i>删除</button>
+        <button lay-event="edit" class="layui-btn"><i class="layui-icon"></i>更新</button>
+        <button lay-event="editPermission" class="layui-btn layui-btn-normal"><i class="layui-icon"></i>更新权限</button>
+    </script>
+</html>

@@ -1,6 +1,5 @@
-.idea/*
+# Created by .ignore support plugin (hsz.mobi)
+/.idea
 *.iml
-*/*.iml
-*/target/
-*/node_modules/
-*/node_modules2/
+/sql
+*/target

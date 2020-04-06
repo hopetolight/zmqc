@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="x-admin-sm">
+    <head>
+        <title>造梦梦青春-后台管理系统</title>
+        <th:block th:replace="common/common :: common-head"/>
+    </head>
+    <body class="index">
+
+        <!-- 顶部开始 -->
+        <div class="container">
+            <div class="logo">
+                <a th:href="@{/index}">造梦青春</a></div>
+            <div class="left_open">
+                <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
+            </div>
+            <ul class="layui-nav left fast-add" lay-filter="">
+                <li class="layui-nav-item">
+                    <a onclick="alert(11)">
+                        <i class="iconfont">&#xe6a2;</i>+新增1</a></dd>
+                    </a>
+                </li>
+                <li class="layui-nav-item">
+                    <a onclick="alert(11)">
+                        <i class="iconfont">&#xe6a2;</i>+新增2</a></dd>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="layui-nav right" lay-filter="">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">admin</a>
+                    <dl class="layui-nav-child">
+                        <!-- 二级菜单 -->
+                        <dd><a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
+                        <dd><a th:href="@{/logout}">退出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item to-index">
+                    <a href="/">前台首页</a></li>
+            </ul>
+        </div>
+        <!-- 顶部结束 -->
+
+        <!-- -----------中部开始 -->
+
+        <!-- 左侧菜单开始 -->
+        <div class="left-nav">
+            <div id="side-nav">
+                <ul id="nav">
+                    <li>
+                        <a href="javascript:;">
+                            <i class="iconfont left-nav-li" lay-tips="系统管理">&#xe6b8;</i>
+                            <cite>系统管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('用户管理','/admin/user/index')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>用户管理</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('角色管理','/admin/role/index')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>角色管理</cite></a>
+                            </li>
+                            <li>
+                                <a onclick="xadmin.add_tab('权限管理','/admin/permission/index')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>权限管理</cite></a>
+                            </li>
+                        </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 左侧菜单结束 -->
+
+        <!-- 右侧主体开始 -->
+        <div class="page-content">
+            <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+                <ul class="layui-tab-title">
+                    <li class="home">
+                        <i class="layui-icon">&#xe68e;</i>我的桌面
+                    </li>
+                </ul>
+                <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+                    <dl>
+                        <dd data-type="this">关闭当前</dd>
+                        <dd data-type="other">关闭其它</dd>
+                        <dd data-type="all">关闭全部</dd>
+                    </dl>
+                </div>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                    </div>
+                </div>
+                <div style="position: absolute;bottom: 0;">
+                    <span>ICP主体备案号:京ICP备20008568号</span>
+                    <span>网站备案号:京ICP备20008568号-1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧主体结束 -->
+
+        <!-- ------------中部结束 -->
+
+
+
+
+    </body>
+    <script>
+        // 是否开启刷新记忆tab功能
+        var is_remember = true;
+    </script>
+
+    <script id="leftMenu" type="text/html">
+    </script>
+</html>

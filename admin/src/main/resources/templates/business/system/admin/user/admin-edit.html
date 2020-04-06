@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="x-admin-sm">
+
+<head>
+    <title>欢迎页面-X-admin2.2</title>
+    <th:block th:replace="common/common :: common-head"/>
+    <script type="text/javascript" th:src="@{/static/business/system/admin/user/adminUserEdit.js}"></script>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <form class="layui-form">
+            <input type="hidden" name="id" th:value="${adminUser.id}">
+            <div class="layui-form-item">
+                <label for="username" class="layui-form-label">
+                    <span class="x-red">*</span>登录名
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="username" name="username" required="" lay-verify="required" th:value="${adminUser.username}"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>将会成为您唯一的登入名
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="nickName" class="layui-form-label">
+                    <span class="x-red">*</span>管理员昵称
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="nickName" name="nickName" required="" lay-verify="nickName" th:value="${adminUser.nickName}"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="phone" class="layui-form-label">
+                    <span class="x-red">*</span>手机
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="phone" name="phone" required="" lay-verify="phone" th:value="${adminUser.phone}"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>将会成为您唯一的登入名
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_email" class="layui-form-label">
+                    <span class="x-red">*</span>邮箱
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_email" name="email" required="" lay-verify="email" th:value="${adminUser.email}"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_email" class="layui-form-label">
+                    <span class="x-red">*</span>角色分配
+                </label>
+                <div class="layui-input-inline">
+                    <div id="role" class="xm-select-demo"></div>
+                    <input type="hidden" name="roleIds" id="roleIds" th:value="${adminUser.roleIds}">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button  class="layui-btn" lay-filter="adminUserEdit" lay-submit="">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

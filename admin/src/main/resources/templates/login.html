@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="x-admin-sm">
+<head>
+    <title>造梦青春-后台管理-登录</title>
+    <th:block th:replace="common/common :: common-head"/>
+    <link rel="stylesheet" th:href="@{/static/common/css/login.css}">
+    <script th:src="@{/static/common/js/login.js}" type="application/javascript" charset="utf-8"></script>
+</head>
+<body class="login-bg">
+    
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">造梦青春后台管理系统</div>
+        <div id="darkbannerwrap"></div>
+        
+        <form method="post" class="layui-form">
+            <input name="username" placeholder="用户名"  type="text" lay-verify="required|username" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" lay-verify="required|password" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input value="登录" lay-submit lay-filter="login" type="submit">
+            <hr class="hr20" >
+        </form>
+
+    </div>
+
+    <!-- 底部结束 -->
+</body>
+</html>

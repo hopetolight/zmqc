@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="common/common :: common-head"/>
+    <title>Title</title>
+    <script type="application/javascript">
+        layui.use(['treeSelect','tree'],function () {
+            var treeSelect = layui.treeSelect;
+            treeSelect.render({
+                // 选择器
+                elem: '#tree',
+                // 数据
+                data: CONTEXT_PATH + '/admin/permission/list',
+                // 异步加载方式：get/post，默认get
+                type: 'get',
+                // 占位符
+                placeholder: '修改默认提示信息',
+                // 是否开启搜索功能：true/false，默认false
+                search: true,
+                // 一些可定制的样式
+                style: {
+                    folder: {
+                        enable: true
+                    },
+                    line: {
+                        enable: true
+                    }
+                },
+                // 点击回调
+                click: function(d){
+                    console.log(d.data[0].id);
+                    $('#tree').val(d.data[0].id);
+                    console.log($('#tree').val());
+
+                },
+                // 加载完成后的回调函数
+                success: function (d) {
+                    let data = d.data;
+                    let newVar = data[0];
+                    // console.log(newVar.id);
+                //选中节点，根据id筛选
+                    treeSelect.checkNode('tree', newVar.id);
+
+
+//                刷新树结构
+                    treeSelect.refresh('tree');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="text" id="tree" lay-filter="tree" class="layui-input"/>
+</body>
+</html>
